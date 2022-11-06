@@ -1,0 +1,36 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "Cropper/1.0.0": {
+        "dependencies": {
+          "WordLib": "1.0.0"
+        },
+        "runtime": {
+          "Cropper.dll": {}
+        }
+      },
+      "WordLib/1.0.0": {
+        "runtime": {
+          "WordLib.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Cropper/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "WordLib/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
