@@ -43,22 +43,41 @@ public partial class Form1 : Form
         return result;
     }
 
-    private void buttonSave_Click(object sender, EventArgs e)
+    private void ButtonSave_Click(object sender, EventArgs e)
     {
-        if(_settings != null)
+        var mainDep = ParseMainDep(textBoxMainDepartment.Text);
+        var subDepsCount = ParseSubDepsCount(textBoxSubDepartmentsCount.Text);
+        var comboboxItems = GetComboboxItemsFromSampleFile(textBoxFileSample.Text);
+        if (_settings == null)
         {
-            _settings.MainDepartment = ParseMainDep(textBoxMainDepartment.Text);
-            _settings.SubDepartmentsCount = ParseSubDepsCount(textBoxSubDepartmentsCount.Text);
+            _settings = new Settings(mainDep, subDepsCount, comboboxItems);
         }
+        else
+        {
+            _settings.MainDepartment = mainDep;
+            _settings.SubDepartmentsCount = subDepsCount;
+            _settings.ComboBoxItems = comboboxItems;
+        }
+        _settings.WriteSettings();
     }
 
-    private int ParseSubDepsCount(string text)
+    private static string[] GetComboboxItemsFromSampleFile(string text)
     {
-        throw new NotImplementedException();
+        return Consts.ComboBoxItems;
+    }
+
+    private static int ParseSubDepsCount(string text)
+    {
+        _ = int.TryParse(text, out int depsCount);
+        return depsCount;
     }
 
     private string ParseMainDep(string text)
     {
-        throw new NotImplementedException();
+        if(!Regex.IsMatch(text, @"^(:\w)"))
+        {
+            throw new Exception($"{labelMainDepartment.Text}: {Consts.WRONG_STING_FORMAT}");
+        }
+        return text;
     }
 }

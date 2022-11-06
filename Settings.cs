@@ -7,7 +7,10 @@ internal class Settings
         get
         {
             var file = Path.Combine(Environment.CurrentDirectory, "settings.json");
-            if (File.Exists(file)) { return file; }
+            if (File.Exists(file)) 
+            { 
+                return file; 
+            }
             throw new Exception(Consts.NO_SETTINGS_FILE);
         } 
     }
@@ -17,10 +20,7 @@ internal class Settings
 
     public Settings()
     {
-        var settings = ReadSettings();
-        MainDepartment = settings.MainDepartment;
-        SubDepartmentsCount = settings.SubDepartmentsCount;
-        ComboBoxItems = settings.ComboBoxItems;
+
     }
 
     public Settings(string mainDepartment, int subDepartmentsCount, string[] comboBoxItems)
@@ -35,9 +35,12 @@ internal class Settings
         File.WriteAllText(SettingsFile, JsonConvert.SerializeObject(this));
     }
 
-    private static Settings ReadSettings()
+    public void ReadSettings()
     {
-        var settings = JsonConvert.DeserializeObject<Settings>(File.ReadAllText(SettingsFile));
-        return settings ?? throw new Exception(Consts.NO_SETTINGS);
+        var fileContent = File.ReadAllText(SettingsFile);
+        var settings = JsonConvert.DeserializeObject<Settings>(fileContent);
+        MainDepartment = settings.MainDepartment;
+        SubDepartmentsCount = settings.SubDepartmentsCount;
+        ComboBoxItems = settings.ComboBoxItems;
     }
 }

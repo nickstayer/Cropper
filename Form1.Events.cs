@@ -14,19 +14,20 @@ public partial class Form1
         textBoxDropable.Text = Consts.DROP_FILES_HERE;
         textBoxFileSample.Text = Consts.DROP_SAMPLE_HERE;
         labelFileName.Text = "";
+        foreach (var item in Consts.ComboBoxItems)
+        {
+            comboBoxDeps.Items.Add(item);
+        }
         try
         {
             _settings = new Settings();
-            foreach (var item in _settings.ComboBoxItems)
-            {
-                comboBoxDeps.Items.Add(item);
-            }
+            _settings.ReadSettings();
             textBoxMainDepartment.Text = _settings.MainDepartment;
             textBoxSubDepartmentsCount.Text = _settings.SubDepartmentsCount.ToString();
         }
         catch (Exception ex)
         {
-            textBoxDropable.Text += ex.Message + "\r\n";
+            textBoxDropable.Text = ex.Message + "\r\n";
         }
     }
 

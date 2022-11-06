@@ -11,6 +11,7 @@ internal class Consts
     public const string FINISH = "Готово!";
     public const string NO_SETTINGS_FILE = "Отсутствует файл настроек";
     public const string NO_SETTINGS = "Требуется произвести настройку";
+    public const string WRONG_STING_FORMAT = "Неверный формат строки";
     public static readonly string[] Patterns =     
     {
         @"^(:\s{3})",   //начинается с: двоеточие, три пробела
@@ -23,8 +24,15 @@ internal class Consts
     public const string MAIN_DEPARTMENT = @":ЧЕЛЯБИНСК";
     public const int SUB_DEPARTMENTS_COUNT = 8;
 
-    public static readonly string[] Items = new string[]
+    public static readonly string[] ComboBoxItems = new string[]
     {
+        "ОП ЛЕНИНСКИЙ",
         "ОП МЕТАЛЛУРГИЧ",
+        "ОП СОВЕТСКИЙ",
+        "ОП ТРАКТОРОЗАВ",
+        "ОП ЦЕНТРАЛЬНЫЙ",
+        "ОП КАЛИНИНСКИЙ",
+        "ОП КУРЧАТОВСКИЙ",
+        "ОП СЕВЕРО-ЗАПАД.",
     };
 }
