@@ -8,10 +8,10 @@ public class Parser
     private int _subDepartmentsCount { get; set; }
     private string[] _patterns { get; set; }
 
-    public Parser(string file, string mainDepartment, int subDepartmentsCount, string[] patterns)
+    public Parser(string file, Settings settings, string[] patterns)
     {
-        _mainDepartment = mainDepartment;
-        _subDepartmentsCount = subDepartmentsCount;
+        _mainDepartment = settings.MainDepartment;
+        _subDepartmentsCount = settings.SubDepartmentsCount;
         _patterns = patterns;
         var contentString = File.ReadAllText(file);
         _contentList = GetList(contentString);
@@ -21,6 +21,49 @@ public class Parser
         {
             GetTrueIndexes(uvdIndex, _subDepartmentsCount);
         }
+    }
+
+    public Parser(string file)
+    {
+        var contentString = File.ReadAllText(file);
+        _contentList = GetList(contentString);
+    }
+
+    public List<string> ParseDepartments(string mainDepartment, int subDepartmentsCount)
+    {
+        var uvdIndex = GetUvdIndexes(mainDepartment).First();
+        _trueIndexes = new();
+        GetTrueIndexes(uvdIndex, subDepartmentsCount);
+        var lines = new List<string>();
+        for(var i = 0; i < _contentList.Count; i++)
+        {
+            if (_trueIndexes.Contains(i))
+            {
+                lines.Add(_contentList[i]);
+            }
+        }
+        var result = ParseDepartmentsNames(lines);
+        return result;
+    }
+
+    public string ParseMainDepartment(string input)
+    {
+        var line = _contentList.Find(x => x.ToLower().Contains(input.ToLower())) ?? throw new Exception(input);
+        var result = ":"+ ParseDepartmentName(line);
+        return result;
+    }
+
+    public List<string> ParseDepartmentsNames(List<string> lines)
+    {
+        return lines
+            .Select(line => ParseDepartmentName(line))
+            .ToList();
+    }
+
+    public string ParseDepartmentName(string line)
+    {
+        var result = line.Split(':')[1].Trim();
+        return result;
     }
 
     public string Parse()
@@ -75,17 +118,17 @@ public class Parser
         int index = _contentList.IndexOf(row);
         if(index == -1)
         {
-            throw new IndexOutOfRangeException();
+            throw new Exception();
         }
         return index;
     }
 
-    private List<int> GetUvdIndexes(string start)
+    private List<int> GetUvdIndexes(string mainDep)
     {
         var result = new List<int>();
         for(var i = 0; i < _contentList.Count; i++)
         {
-            if (_contentList[i].StartsWith(start))
+            if (_contentList[i].StartsWith(mainDep))
             {
                 result.Add(i);
             }

@@ -52,8 +52,8 @@
     },
     "WordLib/1.0.0": {
       "type": "project",
-      "path": "../../../../../_Libs/WordLib/WordLib.csproj",
-      "msbuildProject": "../../../../../_Libs/WordLib/WordLib.csproj"
+      "path": "../../_Libs/WordLib/WordLib.csproj",
+      "msbuildProject": "../../_Libs/WordLib/WordLib.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -68,11 +68,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\YandexDisk\\Dev\\_Archive\\Релизы\\Cropper\\Cropper 2.0\\Cropper\\Cropper.csproj",
+      "projectUniqueName": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj",
       "projectName": "Cropper",
-      "projectPath": "D:\\YandexDisk\\Dev\\_Archive\\Релизы\\Cropper\\Cropper 2.0\\Cropper\\Cropper.csproj",
+      "projectPath": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "D:\\YandexDisk\\Dev\\_Archive\\Релизы\\Cropper\\Cropper 2.0\\Cropper\\obj\\",
+      "outputPath": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",

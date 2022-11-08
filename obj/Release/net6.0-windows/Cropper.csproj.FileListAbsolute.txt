@@ -18,3 +18,4 @@ D:\YandexDisk\Dev\_Archive\Релизы\Cropper\Cropper 2.0\Cropper\obj\Release\
 D:\YandexDisk\Dev\_Archive\Релизы\Cropper\Cropper 2.0\Cropper\obj\Release\net6.0-windows\Cropper.pdb
 D:\YandexDisk\Dev\_Archive\Релизы\Cropper\Cropper 2.0\Cropper\obj\Release\net6.0-windows\Cropper.genruntimeconfig.cache
 D:\YandexDisk\Dev\_Archive\Релизы\Cropper\Cropper 2.0\Cropper\obj\Release\net6.0-windows\ref\Cropper.dll
+D:\YandexDisk\Dev\_Archive\Релизы\Cropper\Cropper 2.0\Cropper\bin\Release\net6.0-windows\Newtonsoft.Json.dll

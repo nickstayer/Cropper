@@ -7,30 +7,6 @@ public partial class Form1
         InitializeComponent();
     }
 
-    private Settings _settings;
-
-    private void Form1_Load(object sender, EventArgs e)
-    {
-        textBoxDropable.Text = Consts.DROP_FILES_HERE;
-        textBoxFileSample.Text = Consts.DROP_SAMPLE_HERE;
-        labelFileName.Text = "";
-        foreach (var item in Consts.ComboBoxItems)
-        {
-            comboBoxDeps.Items.Add(item);
-        }
-        try
-        {
-            _settings = new Settings();
-            _settings.ReadSettings();
-            textBoxMainDepartment.Text = _settings.MainDepartment;
-            textBoxSubDepartmentsCount.Text = _settings.SubDepartmentsCount.ToString();
-        }
-        catch (Exception ex)
-        {
-            textBoxDropable.Text = ex.Message + "\r\n";
-        }
-    }
-
     #region textBoxDropable
     private void textBoxDropable_DragEnter(object sender, DragEventArgs e)
     {
@@ -51,20 +27,21 @@ public partial class Form1
     {
         try
         {
+            Settings.CheckSettingsFile();
+            _settings.CheckSettings();
             var inputFiles = GetFilesInfo(e);
             foreach (var fileInfo in inputFiles)
             {
-                labelFileName.Text = fileInfo.Name;
-                var content = new Parser(fileInfo.FullName, Consts.MAIN_DEPARTMENT, Consts.SUB_DEPARTMENTS_COUNT, Consts.Patterns).Parse();
+                labelStatus.Text = fileInfo.Name;
+                var content = new Parser(fileInfo.FullName, _settings, Consts.Patterns).Parse();
                 SaveToWord(fileInfo, content);
             }
             textBoxDropable.Text = Consts.DROP_FILES_HERE;
-            labelFileName.Text = Consts.FINISH;
+            labelStatus.Text = Consts.FINISH;
         }
         catch (Exception ex)
         {
-            textBoxDropable.Text += ex.Message + "\r\n";
-            textBoxDropable.Text += Consts.DROP_FILES_HERE;
+            textBoxDropable.Text = ex.Message + "\r\n";
         }
     }
 
@@ -74,7 +51,7 @@ public partial class Form1
     }
     #endregion
 
-    #region textBoxFileSamle
+    #region textBoxFileSample
     private void textBoxFileSample_DragEnter(object sender, DragEventArgs e)
     {
         if (e.Data == null)
@@ -92,14 +69,30 @@ public partial class Form1
 
     private void textBoxFileSample_DragDrop(object sender, DragEventArgs e)
     {
+
         try
         {
+            Settings.CheckSettingsFile();
+            CheckRequiredFields();
             var inputFiles = GetFilesInfo(e);
-            textBoxFileSample.Text = inputFiles.First().Name;
+            textBoxFileSample.Text = inputFiles.First().FullName;
+            SetSettings();
+            GetSettings();
+            PrepareForm();
+            FillFormFromSettings();
+            labelStatus.Text = Consts.SETTINGS_SAVED;
         }
         catch (Exception ex)
         {
-            textBoxFileSample.Text = $"{ex.Message}. {Consts.DROP_SAMPLE_HERE}";
+            textBoxFileSample.Text = $"{ex.Message}";
+        }
+    }
+
+    private void CheckRequiredFields()
+    {
+        if (string.IsNullOrWhiteSpace(textBoxMainDepartment.Text))
+        {
+            throw new Exception(Consts.FILL_REQUIRED_FIELDS);
         }
     }
 

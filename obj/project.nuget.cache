@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/OAlAQsEDahYwbJL7CSZeDCUGXXFYCNo2OJV6ZcogAPu9PGnFHWsr58fl4j8J6R7PNWfNxtQGXI6KnfkSRAC3w==",
+  "dgSpecHash": "f3oDAqSgP74bydcK16AV5of9FIn3d6FXFV9WeYsiLxSUFNEkmGzgwsERmQ/ZoJGBl3HZfmMszuQD+auqMlTEow==",
   "success": true,
-  "projectFilePath": "D:\\YandexDisk\\Dev\\_Archive\\Релизы\\Cropper\\Cropper 2.0\\Cropper\\Cropper.csproj",
+  "projectFilePath": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512"
   ],

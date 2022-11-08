@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\..\_Libs\WordLib\WordLib.csproj" />
+    <ProjectReference Include="..\..\_Libs\WordLib\WordLib.csproj" />
   </ItemGroup>
 
 </Project>
