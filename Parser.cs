@@ -2,42 +2,73 @@
 
 public class Parser
 {
-    private List<string> _contentList { get; set; }
-    private HashSet<int> _trueIndexes { get; set; }
-    private string _mainDepartment { get; set; }
-    private int _subDepartmentsCount { get; set; }
+    private Dictionary<int,string> _contentList { get; set; }
+    private HashSet<int> _needDepartmentIndexes { get; set; }
     private string[] _patterns { get; set; }
 
-    public Parser(string file, Settings settings, string[] patterns)
+    public Parser(string file, Settings settings)
     {
-        _mainDepartment = settings.MainDepartment;
-        _subDepartmentsCount = settings.SubDepartmentsCount;
-        _patterns = patterns;
-        var contentString = File.ReadAllText(file);
-        _contentList = GetList(contentString);
-        var uvdIndexes = GetUvdIndexes(_mainDepartment);
-        _trueIndexes = new();
-        foreach (var uvdIndex in uvdIndexes)
+        var mainDepartmentName = settings.MainDepartmentName;
+        var subDepartmentsCount = settings.SubDepartmentsCount;
+        string content = File.ReadAllText(file, Encoding.Default);
+        _contentList = GetNumeratedRows(content);
+        var mainDepartmentIndexes = GetMainDepartmentIndexes(mainDepartmentName);
+        _needDepartmentIndexes = new();
+        foreach (var uvdIndex in mainDepartmentIndexes)
         {
-            GetTrueIndexes(uvdIndex, _subDepartmentsCount);
+            GetNeedDepartmentIndexes(uvdIndex, subDepartmentsCount);
+        }
+    }
+
+    private static Dictionary<int, string> GetNumeratedRows(string contentString)
+    {
+        var resultArr = Regex.Split(contentString, @"[\r\n]");
+        var resultList = GetNotEmptyRows(resultArr);
+        var resultDic = new Dictionary<int, string>();
+        for (int i = 0; i < resultList.Count; i++)
+        {
+            resultDic.Add(i, resultList[i]);
+        }
+        return resultDic;
+    }
+
+    private List<int> GetMainDepartmentIndexes(string mainDep)
+    {
+        var result = new List<int>();
+        foreach (var pair in _contentList)
+        {
+            if (pair.Value.StartsWith(mainDep))
+            {
+                result.Add(pair.Key);
+            }
+        }
+        return result;
+    }
+
+    private void GetNeedDepartmentIndexes(int firstTrueIndex, int nextRowsCount)
+    {
+        for (var i = 0; i < nextRowsCount + 1; i++)
+        {
+            _needDepartmentIndexes.Add(firstTrueIndex);
+            firstTrueIndex++;
         }
     }
 
     public Parser(string file)
     {
-        var contentString = File.ReadAllText(file);
-        _contentList = GetList(contentString);
+        var content = File.ReadAllText(file, Encoding.Default);
+        _contentList = GetNumeratedRows(content);
     }
 
     public List<string> ParseDepartments(string mainDepartment, int subDepartmentsCount)
     {
-        var uvdIndex = GetUvdIndexes(mainDepartment).First();
-        _trueIndexes = new();
-        GetTrueIndexes(uvdIndex, subDepartmentsCount);
+        var uvdIndex = GetMainDepartmentIndexes(mainDepartment).First();
+        _needDepartmentIndexes = new();
+        GetNeedDepartmentIndexes(uvdIndex, subDepartmentsCount);
         var lines = new List<string>();
         for(var i = 0; i < _contentList.Count; i++)
         {
-            if (_trueIndexes.Contains(i))
+            if (_needDepartmentIndexes.Contains(i))
             {
                 lines.Add(_contentList[i]);
             }
@@ -46,10 +77,9 @@ public class Parser
         return result;
     }
 
-    public string ParseMainDepartment(string input)
+    public KeyValuePair<int,string> ParseMainDepartment(string input)
     {
-        var line = _contentList.Find(x => x.ToLower().Contains(input.ToLower())) ?? throw new Exception(input);
-        var result = ":"+ ParseDepartmentName(line);
+        var result = _contentList.Where(x => x.Value.ToLower().Contains(input.ToLower())).FirstOrDefault();
         return result;
     }
 
@@ -66,10 +96,11 @@ public class Parser
         return result;
     }
 
-    public string Parse()
+    public string Parse(string[] patterns)
     {
         var parsedList = _contentList
-            .Where(row => Conditions(row, _patterns))
+            .Where(pair => Conditions(pair, patterns))
+            .Select(pair => pair.Value)
             .ToList();
         var result = string
             .Join("\r\n", parsedList)
@@ -78,20 +109,20 @@ public class Parser
         return result;
     }
 
-    private bool Conditions(string row, string[] patterns)
+    private bool Conditions(KeyValuePair<int,string> row, string[] patterns)
     {
-        if(HasTrueIndex(RowIndex(row)))
+        if (HasTrueIndex(row.Key))
         {
             return true;
         }
         return HasTargetPattern(row, patterns);
     }
 
-    private bool HasTargetPattern(string row, string[] patterns)
+    private bool HasTargetPattern(KeyValuePair<int, string> row, string[] patterns)
     {
         foreach (var pattern in patterns)
         {
-            if (Regex.IsMatch(row, pattern))
+            if (Regex.IsMatch(row.Value, pattern))
             {
                 return true;
             }
@@ -99,48 +130,27 @@ public class Parser
         return false;
     }
 
+    private bool IsTableBorderIndex(string row)
+    {
+        var result = Regex.IsMatch(row, @"^\W(-)+");
+        return result;
+    }
+
     private bool HasTrueIndex(int index)
     {
-        return _trueIndexes.Contains(index);
+        return _needDepartmentIndexes.Contains(index);
     }
 
-    private void GetTrueIndexes(int firstTrueIndex, int nextRowsCount)
+    private static List<string> GetNotEmptyRows(string[] resultArr)
     {
-        for (var i = 0; i < nextRowsCount + 1; i++)
+        var resultList = new List<string>();
+        for (int i = 0; i < resultArr.Length; i++)
         {
-            _trueIndexes.Add(firstTrueIndex);
-            firstTrueIndex++;
-        }
-    }
-
-    private int RowIndex(string row)
-    {
-        int index = _contentList.IndexOf(row);
-        if(index == -1)
-        {
-            throw new Exception();
-        }
-        return index;
-    }
-
-    private List<int> GetUvdIndexes(string mainDep)
-    {
-        var result = new List<int>();
-        for(var i = 0; i < _contentList.Count; i++)
-        {
-            if (_contentList[i].StartsWith(mainDep))
+            if (!string.IsNullOrEmpty(resultArr[i]))
             {
-                result.Add(i);
+                resultList.Add(resultArr[i]);
             }
         }
-        return result;
-    }
-
-    private static List<string> GetList(string contentString)
-    {
-        var result = Regex.Split(contentString, @"[\r\n]")
-            .Where(str => !String.IsNullOrEmpty(str))
-            .ToList();
-        return result;
+        return resultList;
     }
 }

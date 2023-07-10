@@ -5,7 +5,7 @@ VisualStudioVersion = 17.2.32505.173
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cropper", "Cropper.csproj", "{F6E28D3F-9651-4AA1-8C31-48C01D19FD3D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordLib", "..\..\_Libs\WordLib\WordLib.csproj", "{F2A45155-3092-449D-8DC4-AE97EEF796F0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WordLib", "..\_Libs\WordLib\WordLib.csproj", "{F2A45155-3092-449D-8DC4-AE97EEF796F0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

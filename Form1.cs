@@ -8,17 +8,24 @@ public partial class Form1 : Form
     {
         try
         {
-            PrepareForm();
+            UpdateEncodings();
+            SetDefaultText();
             GetSettings();
             FillFormFromSettings();
         }
         catch (Exception ex)
         {
-            textBoxDropable.Text = ex.Message + "\r\n";
+            textBoxDropable.Text = ex.Message;
         }
     }
 
-    private void PrepareForm()
+    private void UpdateEncodings()
+    {
+        comboBoxFileEncoding.Items.Add("windows-1251");
+        comboBoxFileEncoding.Items.Add("utf-8");
+    }
+
+    private void SetDefaultText()
     {
         labelStatus.Text = "";
         textBoxFileSample.Text = Consts.DROP_SAMPLE_HERE;
@@ -36,12 +43,13 @@ public partial class Form1 : Form
     private void FillFormFromSettings()
     {
         comboBoxDeps.Items.Clear();
-        foreach (var item in _settings.Departments)
+        foreach (var item in _settings.DepartmentsNames)
         {
             comboBoxDeps.Items.Add(item);
         }
-        textBoxMainDepartment.Text = _settings.MainDepartment;
+        textBoxMainDepartment.Text = _settings.MainDepartmentName;
         textBoxSubDepartmentsCount.Text = _settings.SubDepartmentsCount.ToString();
+        comboBoxFileEncoding.Text = _settings.DefaultFileEncoding;
     }
 
     private void SaveToWord(FileInfo fileInfo, string content)
@@ -90,24 +98,36 @@ public partial class Form1 : Form
         var settings = ParseSettings();
         if (_settings == null)
         {
-            _settings = new Settings(settings.Item1, settings.Item2, settings.Item3);
+            _settings = new Settings(settings.Item1, settings.Item2, settings.Item3, settings.Item4);
         }
         else
         {
-            _settings.MainDepartment = settings.Item1;
+            _settings.MainDepartmentName = settings.Item1;
             _settings.SubDepartmentsCount = settings.Item2;
-            _settings.Departments = settings.Item3;
+            _settings.DepartmentsNames = settings.Item3;
+            _settings.DefaultFileEncoding = settings.Item4;
         }
         _settings.WriteSettings();
     }
 
-    (string, int, IEnumerable<string>) ParseSettings()
+    (string, int, IEnumerable<string>, string) ParseSettings()
     {
         var parser = new Parser(textBoxFileSample.Text);
         var mainDep = ParseMainDep(parser, textBoxMainDepartment.Text);
         var subDepsCount = ParseSubDepsCount(textBoxSubDepartmentsCount.Text);
-        var comboboxItems = ParseDeparments(parser, textBoxFileSample.Text, mainDep, subDepsCount);
-        return (mainDep, subDepsCount, comboboxItems);
+        var comboboxItems = ParseDeparments(parser, textBoxFileSample.Text, mainDep.Value, subDepsCount);
+        var defaultEncoding = ParseEncoding(comboBoxFileEncoding.Text);
+        return (mainDep.Value, subDepsCount, comboboxItems, defaultEncoding);
+    }
+
+    private string ParseEncoding(string text)
+    {
+        
+        if (string.IsNullOrEmpty(text))
+        {
+            return comboBoxFileEncoding.Items[0].ToString();
+        }
+        return text;
     }
 
     private IEnumerable<string> ParseDeparments(Parser parser, string sampleFile, string mainDep, int subDepsCount)
@@ -126,10 +146,14 @@ public partial class Form1 : Form
         return depsCount;
     }
 
-    private string ParseMainDep(Parser parser, string text)
+    private KeyValuePair<int,string> ParseMainDep(Parser parser, string text)
     {
-        //var result = text.Contains(':') ? text.ToUpper().Trim() : ':' + text.ToUpper().Trim();
         var result = parser.ParseMainDepartment(text);
         return result;
+    }
+
+    private void OutputTextboxDropable(string message)
+    {
+        textBoxDropable.Text += message + "\r\n";
     }
 }

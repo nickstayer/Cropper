@@ -3,20 +3,22 @@
 public class Settings
 {
     private static readonly string SettingsFile = Path.Combine(Environment.CurrentDirectory, "settings.json");
-    public string MainDepartment { get; set; }
+    public string MainDepartmentName { get; set; }
     public int SubDepartmentsCount { get; set; }
-    public IEnumerable<string> Departments { get; set; }
+    public IEnumerable<string> DepartmentsNames { get; set; }
+    public string DefaultFileEncoding { get; set; }
 
     public Settings()
     {
 
     }
 
-    public Settings(string mainDepartment, int subDepartmentsCount, IEnumerable<string> comboBoxItems)
+    public Settings(string mainDepartment, int subDepartmentsCount, IEnumerable<string> comboBoxItems, string defaultEncoding)
     {
-        MainDepartment = mainDepartment;
+        MainDepartmentName = mainDepartment;
         SubDepartmentsCount = subDepartmentsCount;
-        Departments = comboBoxItems;
+        DepartmentsNames = comboBoxItems;
+        DefaultFileEncoding = defaultEncoding;
     }
 
     public void WriteSettings()
@@ -32,14 +34,15 @@ public class Settings
         {
             throw new Exception(Consts.NO_SETTINGS);
         }
-        MainDepartment = settings.MainDepartment;
+        MainDepartmentName = settings.MainDepartmentName;
         SubDepartmentsCount = settings.SubDepartmentsCount;
-        Departments = settings.Departments;
+        DepartmentsNames = settings.DepartmentsNames;
+        DefaultFileEncoding = settings.DefaultFileEncoding;
     }
 
     public void CheckSettings()
     {
-        if (MainDepartment == null || Departments == null)
+        if (MainDepartmentName == null || DepartmentsNames == null)
         {
             throw new Exception(Consts.NO_SETTINGS);
         }

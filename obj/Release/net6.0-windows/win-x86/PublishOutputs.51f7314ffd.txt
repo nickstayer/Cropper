@@ -1,0 +1,8 @@
+D:\YandexDisk\Dev\Cropper 2.0\Publish\Cropper.pdb
+D:\YandexDisk\Dev\Cropper 2.0\Publish\D3DCompiler_47_cor3.dll
+D:\YandexDisk\Dev\Cropper 2.0\Publish\PenImc_cor3.dll
+D:\YandexDisk\Dev\Cropper 2.0\Publish\PresentationNative_cor3.dll
+D:\YandexDisk\Dev\Cropper 2.0\Publish\vcruntime140_cor3.dll
+D:\YandexDisk\Dev\Cropper 2.0\Publish\wpfgfx_cor3.dll
+D:\YandexDisk\Dev\Cropper 2.0\Publish\WordLib.pdb
+D:\YandexDisk\Dev\Cropper 2.0\Publish\Cropper.exe

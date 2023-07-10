@@ -5,7 +5,7 @@ namespace Cropper;
 internal class Consts
 {
     public const string DROP_FILES_HERE = "Скопируйте формы в текстовые файлы (.txt) и перетащите их сюда";
-    public const string DROP_SAMPLE_HERE = "Перетащите сюда образец формы (.txt), чтобы сохранить настройки";
+    public const string DROP_SAMPLE_HERE = "Сохраните настройки, перетащив сюда любую форму ИЦ(.txt)";
     public const string INPUT_FILE_EXTENTION = ".txt";
     public const string WRONG_EXTENTION = "Недопустимое расширение файла";
     public const string FINISH = "Готово!";

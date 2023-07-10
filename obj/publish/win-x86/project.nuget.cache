@@ -1,0 +1,16 @@
+{
+  "version": 2,
+  "dgSpecHash": "HE2oBVA09pZJcyBJi2XwHXCqA/KV1lNy9rrqbcycLZnlZLDasf5YaHo19PQoSN1u1SnrFGX5PteUj9TIUb0EPA==",
+  "success": true,
+  "projectFilePath": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.1\\microsoft.netcore.platforms.3.1.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\newtonsoft.json\\13.0.1\\newtonsoft.json.13.0.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\system.text.encoding.codepages\\4.7.1\\system.text.encoding.codepages.4.7.1.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.app.runtime.win-x86\\6.0.9\\microsoft.netcore.app.runtime.win-x86.6.0.9.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.windowsdesktop.app.runtime.win-x86\\6.0.9\\microsoft.windowsdesktop.app.runtime.win-x86.6.0.9.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.aspnetcore.app.runtime.win-x86\\6.0.9\\microsoft.aspnetcore.app.runtime.win-x86.6.0.9.nupkg.sha512",
+    "C:\\Users\\admin\\.nuget\\packages\\microsoft.netcore.app.crossgen2.win-x64\\6.0.9\\microsoft.netcore.app.crossgen2.win-x64.6.0.9.nupkg.sha512"
+  ],
+  "logs": []
+}

@@ -6,3 +6,4 @@ global using System.Threading.Tasks;
 global using WordLib;
 global using System.Text.RegularExpressions;
 global using Newtonsoft.Json;
+global using System.Globalization;

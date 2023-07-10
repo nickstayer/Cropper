@@ -20,7 +20,7 @@ public partial class Form1
 
     private void textBoxDropable_DragOver(object sender, DragEventArgs e)
     {
-        textBoxDropable.Text = "";
+        textBoxDropable.Clear();
     }
 
     private void textBoxDropable_DragDrop(object sender, DragEventArgs e)
@@ -33,15 +33,16 @@ public partial class Form1
             foreach (var fileInfo in inputFiles)
             {
                 labelStatus.Text = fileInfo.Name;
-                var content = new Parser(fileInfo.FullName, _settings, Consts.Patterns).Parse();
+                var parser = new Parser(fileInfo.FullName, _settings);
+                var content = parser.Parse(Consts.Patterns);
                 SaveToWord(fileInfo, content);
             }
-            textBoxDropable.Text = Consts.DROP_FILES_HERE;
+            OutputTextboxDropable(Consts.DROP_FILES_HERE);
             labelStatus.Text = Consts.FINISH;
         }
         catch (Exception ex)
         {
-            textBoxDropable.Text = ex.Message + "\r\n";
+            OutputTextboxDropable(ex.Message);
         }
     }
 
@@ -64,12 +65,11 @@ public partial class Form1
 
     private void textBoxFileSample_DragOver(object sender, DragEventArgs e)
     {
-        textBoxFileSample.Text = "";
+        textBoxFileSample.Clear();
     }
 
     private void textBoxFileSample_DragDrop(object sender, DragEventArgs e)
     {
-
         try
         {
             Settings.CheckSettingsFile();
@@ -78,7 +78,7 @@ public partial class Form1
             textBoxFileSample.Text = inputFiles.First().FullName;
             SetSettings();
             GetSettings();
-            PrepareForm();
+            SetDefaultText();
             FillFormFromSettings();
             labelStatus.Text = Consts.SETTINGS_SAVED;
         }

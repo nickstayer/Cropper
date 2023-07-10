@@ -28,12 +28,15 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.textBoxDropable = new System.Windows.Forms.TextBox();
             this.comboBoxDeps = new System.Windows.Forms.ComboBox();
             this.labelStatus = new System.Windows.Forms.Label();
             this.tabControlMain = new System.Windows.Forms.TabControl();
             this.tabPage = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.labelFileEncoding = new System.Windows.Forms.Label();
+            this.comboBoxFileEncoding = new System.Windows.Forms.ComboBox();
             this.textBoxFileSample = new System.Windows.Forms.TextBox();
             this.textBoxSubDepartmentsCount = new System.Windows.Forms.TextBox();
             this.labelFileSample = new System.Windows.Forms.Label();
@@ -102,6 +105,8 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.labelFileEncoding);
+            this.tabPage2.Controls.Add(this.comboBoxFileEncoding);
             this.tabPage2.Controls.Add(this.textBoxFileSample);
             this.tabPage2.Controls.Add(this.textBoxSubDepartmentsCount);
             this.tabPage2.Controls.Add(this.labelFileSample);
@@ -116,13 +121,30 @@
             this.tabPage2.Text = "Настройки";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // labelFileEncoding
+            // 
+            this.labelFileEncoding.AutoSize = true;
+            this.labelFileEncoding.Location = new System.Drawing.Point(0, 47);
+            this.labelFileEncoding.Name = "labelFileEncoding";
+            this.labelFileEncoding.Size = new System.Drawing.Size(66, 15);
+            this.labelFileEncoding.TabIndex = 7;
+            this.labelFileEncoding.Text = "Кодировка";
+            // 
+            // comboBoxFileEncoding
+            // 
+            this.comboBoxFileEncoding.FormattingEnabled = true;
+            this.comboBoxFileEncoding.Location = new System.Drawing.Point(102, 44);
+            this.comboBoxFileEncoding.Name = "comboBoxFileEncoding";
+            this.comboBoxFileEncoding.Size = new System.Drawing.Size(138, 23);
+            this.comboBoxFileEncoding.TabIndex = 6;
+            // 
             // textBoxFileSample
             // 
             this.textBoxFileSample.AllowDrop = true;
-            this.textBoxFileSample.Location = new System.Drawing.Point(102, 44);
+            this.textBoxFileSample.Location = new System.Drawing.Point(102, 64);
             this.textBoxFileSample.Multiline = true;
             this.textBoxFileSample.Name = "textBoxFileSample";
-            this.textBoxFileSample.Size = new System.Drawing.Size(138, 67);
+            this.textBoxFileSample.Size = new System.Drawing.Size(138, 47);
             this.textBoxFileSample.TabIndex = 5;
             this.textBoxFileSample.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBoxFileSample_DragDrop);
             this.textBoxFileSample.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBoxFileSample_DragEnter);
@@ -139,7 +161,7 @@
             // labelFileSample
             // 
             this.labelFileSample.AutoSize = true;
-            this.labelFileSample.Location = new System.Drawing.Point(0, 47);
+            this.labelFileSample.Location = new System.Drawing.Point(0, 67);
             this.labelFileSample.Name = "labelFileSample";
             this.labelFileSample.Size = new System.Drawing.Size(92, 15);
             this.labelFileSample.TabIndex = 3;
@@ -177,6 +199,7 @@
             this.ClientSize = new System.Drawing.Size(248, 160);
             this.Controls.Add(this.tabControlMain);
             this.Controls.Add(this.labelStatus);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Tag = "";
             this.Text = "Cropper 2.0";
@@ -205,5 +228,7 @@
         private Label labelSubDepartmentsCount;
         private TextBox textBoxMainDepartment;
         private Label labelMainDepartment;
+        private Label labelFileEncoding;
+        private ComboBox comboBoxFileEncoding;
     }
 }
