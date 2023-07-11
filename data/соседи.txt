@@ -1,0 +1,43 @@
+public static int[] FindNeighbors(int[] arr, int i)
+{
+    int leftNeighbor = -1; // Инициализируем левого соседа значением -1
+    int rightNeighbor = -1; // Инициализируем правого соседа значением -1
+
+    for (int j = 0; j < arr.Length; j++)
+    {
+        if (arr[j] == i) // Нашли число i в массиве
+        {
+            if (j > 0) // Проверяем, что у числа есть левый сосед
+            {
+                leftNeighbor = arr[j - 1]; // Присваиваем значение левого соседа
+            }
+
+            if (j < arr.Length - 1) // Проверяем, что у числа есть правый сосед
+            {
+                rightNeighbor = arr[j + 1]; // Присваиваем значение правого соседа
+            }
+
+            break; // Прерываем цикл, так как нашли число i и его соседей
+        }
+    }
+
+    return new int[] { leftNeighbor, rightNeighbor }; // Возвращаем найденных соседей
+}
+
+
+Пример использования:
+csharp
+int[] arr = { 2, 8, 12, 24 };
+int i = 15;
+int[] neighbors = FindNeighbors(arr, i);
+
+Console.WriteLine("Соседи числа {0}:", i);
+Console.WriteLine("Левый сосед: {0}", neighbors[0]);
+Console.WriteLine("Правый сосед: {0}", neighbors[1]);
+
+
+Результат:
+
+Соседи числа 15:
+Левый сосед: 12
+Правый сосед: 24

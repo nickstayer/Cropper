@@ -6,7 +6,7 @@
   "compilationOptions": {},
   "targets": {
     ".NETCoreApp,Version=v6.0": {
-      "Microsoft.NETCore.Platforms/3.1.1": {},
+      "Microsoft.NETCore.Platforms/8.0.0-preview.3.23174.8": {},
       "Newtonsoft.Json/13.0.1": {
         "runtime": {
           "lib/netstandard2.0/Newtonsoft.Json.dll": {
@@ -17,7 +17,7 @@
       },
       "System.Text.Encoding.CodePages/4.7.1": {
         "dependencies": {
-          "Microsoft.NETCore.Platforms": "3.1.1"
+          "Microsoft.NETCore.Platforms": "8.0.0-preview.3.23174.8"
         },
         "runtime": {
           "lib/netstandard2.0/System.Text.Encoding.CodePages.dll": {
@@ -37,12 +37,12 @@
     }
   },
   "libraries": {
-    "Microsoft.NETCore.Platforms/3.1.1": {
+    "Microsoft.NETCore.Platforms/8.0.0-preview.3.23174.8": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-RmINcaqiEkawM9C8oxFMN/CZmn1fGKWVsosbSY/8ARUNdHqV47hqhPVbrG3qUqLaRQI5w4HuqFOqrbhoSWcH6w==",
-      "path": "microsoft.netcore.platforms/3.1.1",
-      "hashPath": "microsoft.netcore.platforms.3.1.1.nupkg.sha512"
+      "sha512": "sha512-6/pofGxz/koGZ25wtlQjhvdpehXdjqa6XHHGsnFZ2mxjXaHR2uaVIKsqebVlQntIgXMn/O8/WZxY4kPzkbJW6g==",
+      "path": "microsoft.netcore.platforms/8.0.0-preview.3.23174.8",
+      "hashPath": "microsoft.netcore.platforms.8.0.0-preview.3.23174.8.nupkg.sha512"
     },
     "Newtonsoft.Json/13.0.1": {
       "type": "package",
