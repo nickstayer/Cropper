@@ -50,6 +50,10 @@
             this.textBoxDropable.Name = "textBoxDropable";
             this.textBoxDropable.Size = new System.Drawing.Size(259, 135);
             this.textBoxDropable.TabIndex = 1;
+            this.textBoxDropable.DragDrop += new System.Windows.Forms.DragEventHandler(this.textBoxDropable_DragDrop);
+            this.textBoxDropable.DragEnter += new System.Windows.Forms.DragEventHandler(this.textBoxDropable_DragEnter);
+            this.textBoxDropable.DragOver += new System.Windows.Forms.DragEventHandler(this.textBoxDropable_DragOver);
+            this.textBoxDropable.DragLeave += new System.EventHandler(this.textBoxDropable_DragLeave);
             // 
             // labelStatus
             // 

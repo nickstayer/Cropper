@@ -31,7 +31,7 @@ public partial class Form1
             foreach (var fileInfo in inputFiles)
             {
                 labelStatus.Text = fileInfo.Name;
-                var parser = new Parser(fileInfo.FullName);
+                var parser = new Parser(fileInfo.FullName, _departments);
                 var content = parser.Parse();
                 SaveToWord(fileInfo, content);
             }

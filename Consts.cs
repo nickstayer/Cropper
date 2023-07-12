@@ -10,8 +10,8 @@ internal class Consts
     public const string NO_SETTINGS_FILE = "Отсутствует файл настроек";
     public const string FINISH = "Готово!";
     public const string HIGHLIGHT = "Выделить";
-    public const string MAIN_DEPARTMENT = "ЧЕЛЯБИНСК";
-    public const string TOTAL = "ОБЛАСТЬ";
+    public const string FIRST_TABLE_BODY_ROW = ":АГАПОВКА";
+    public const string LAST_TABLE_BODY_ROW = ":ОБЛАСТЬ";
 
     //public static readonly string[] Patterns =     
     //{
