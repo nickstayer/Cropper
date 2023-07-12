@@ -27,14 +27,12 @@ public partial class Form1
     {
         try
         {
-            Settings.CheckSettingsFile();
-            _settings.CheckSettings();
             var inputFiles = GetFilesInfo(e);
             foreach (var fileInfo in inputFiles)
             {
                 labelStatus.Text = fileInfo.Name;
-                var parser = new Parser(fileInfo.FullName, _settings);
-                var content = parser.Parse(Consts.Patterns);
+                var parser = new Parser(fileInfo.FullName);
+                var content = parser.Parse();
                 SaveToWord(fileInfo, content);
             }
             OutputTextboxDropable(Consts.DROP_FILES_HERE);
@@ -50,55 +48,5 @@ public partial class Form1
     {
         textBoxDropable.Text = Consts.DROP_FILES_HERE;
     }
-    #endregion
-
-    #region textBoxFileSample
-    private void textBoxFileSample_DragEnter(object sender, DragEventArgs e)
-    {
-        if (e.Data == null)
-        {
-            throw new NullReferenceException();
-        }
-        if (e.Data.GetDataPresent(DataFormats.FileDrop, false) == true)
-            e.Effect = DragDropEffects.All;
-    }
-
-    private void textBoxFileSample_DragOver(object sender, DragEventArgs e)
-    {
-        textBoxFileSample.Clear();
-    }
-
-    private void textBoxFileSample_DragDrop(object sender, DragEventArgs e)
-    {
-        try
-        {
-            Settings.CheckSettingsFile();
-            CheckRequiredFields();
-            var inputFiles = GetFilesInfo(e);
-            textBoxFileSample.Text = inputFiles.First().FullName;
-            SetSettings();
-            GetSettings();
-            SetDefaultText();
-            FillFormFromSettings();
-            labelStatus.Text = Consts.SETTINGS_SAVED;
-        }
-        catch (Exception ex)
-        {
-            textBoxFileSample.Text = $"{ex.Message}";
-        }
-    }
-
-    private void CheckRequiredFields()
-    {
-        if (string.IsNullOrWhiteSpace(textBoxMainDepartment.Text))
-        {
-            throw new Exception(Consts.FILL_REQUIRED_FIELDS);
-        }
-    }
-
-    private void textBoxFileSample_DragLeave(object sender, EventArgs e)
-    {
-        textBoxFileSample.Text = Consts.DROP_SAMPLE_HERE;
-    } 
     #endregion
 }
