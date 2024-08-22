@@ -182,3 +182,4 @@ c:\Git\Cropper\obj\Debug\net6.0-windows\refint\Cropper.dll
 c:\Git\Cropper\obj\Debug\net6.0-windows\Cropper.pdb
 c:\Git\Cropper\obj\Debug\net6.0-windows\Cropper.genruntimeconfig.cache
 c:\Git\Cropper\obj\Debug\net6.0-windows\ref\Cropper.dll
+C:\Git\Cropper\obj\Debug\net6.0-windows\Cropper.sourcelink.json

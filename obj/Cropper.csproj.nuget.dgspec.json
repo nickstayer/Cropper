@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Git\\Cropper\\Cropper.csproj": {}
+    "C:\\Git\\Cropper\\Cropper.csproj": {}
   },
   "projects": {
-    "c:\\Git\\Cropper\\Cropper.csproj": {
+    "C:\\Git\\Cropper\\Cropper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Git\\Cropper\\Cropper.csproj",
+        "projectUniqueName": "C:\\Git\\Cropper\\Cropper.csproj",
         "projectName": "Cropper",
-        "projectPath": "c:\\Git\\Cropper\\Cropper.csproj",
+        "projectPath": "C:\\Git\\Cropper\\Cropper.csproj",
         "packagesPath": "C:\\Users\\susbook\\.nuget\\packages\\",
-        "outputPath": "c:\\Git\\Cropper\\obj\\",
+        "outputPath": "C:\\Git\\Cropper\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
