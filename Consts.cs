@@ -12,14 +12,17 @@ internal class Consts
     public const string HIGHLIGHT = "Выделить";
     public const string FIRST_TABLE_BODY_ROW = ":АГАПОВКА";
     public const string LAST_TABLE_BODY_ROW = ":ОБЛАСТЬ";
+    public const string ENCODING_DEFAULT = "по умолчанию";
+    public const string ENCODING_1251 = "windows-1251";
+    public const string ENCODING = "Кодировка";
 
-    //public static readonly string[] Patterns =     
-    //{
-    //    @"^(:\s{3})",   //начинается с: двоеточие, три пробела
-    //    @"^\s",         //пробел
-    //    @"^(:-)",       //двоеточие, дефис
-    //    @"^(:ОБЛАСТЬ)",
-    //    @"^\w",         //любая буква
-    //};
+
     public const string SETTINGS_FILE = "settings.txt";
+    public const string ENCODING_FILE = "encoding.txt";
+
+    public static string[] Encodings = new string[]
+    {
+        ENCODING_DEFAULT,
+        ENCODING_1251
+    };
 }

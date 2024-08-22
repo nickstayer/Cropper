@@ -10,7 +10,7 @@
         "dependencies": {
           "Microsoft.NETCore.Platforms": "8.0.0-preview.3.23174.8",
           "System.Text.Encoding.CodePages": "4.7.1",
-          "WordLib": "1.0.0"
+          "WordLib": "1.0.0.0"
         },
         "runtime": {
           "Cropper.dll": {}
@@ -22,9 +22,12 @@
           "Microsoft.NETCore.Platforms": "8.0.0-preview.3.23174.8"
         }
       },
-      "WordLib/1.0.0": {
+      "WordLib/1.0.0.0": {
         "runtime": {
-          "WordLib.dll": {}
+          "WordLib.dll": {
+            "assemblyVersion": "1.0.0.0",
+            "fileVersion": "1.0.0.0"
+          }
         }
       }
     }
@@ -49,8 +52,8 @@
       "path": "system.text.encoding.codepages/4.7.1",
       "hashPath": "system.text.encoding.codepages.4.7.1.nupkg.sha512"
     },
-    "WordLib/1.0.0": {
-      "type": "project",
+    "WordLib/1.0.0.0": {
+      "type": "reference",
       "serviceable": false,
       "sha512": ""
     }

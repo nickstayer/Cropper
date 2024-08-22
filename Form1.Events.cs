@@ -31,7 +31,7 @@ public partial class Form1
             foreach (var fileInfo in inputFiles)
             {
                 labelStatus.Text = fileInfo.Name;
-                var parser = new Parser(fileInfo.FullName, _departments);
+                var parser = new Parser(fileInfo.FullName, _departments, GetEncoding());
                 var content = parser.Parse();
                 SaveToWord(fileInfo, content);
             }
@@ -44,9 +44,23 @@ public partial class Form1
         }
     }
 
+    private Encoding GetEncoding()
+    {
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        if (cbEncodings.Text == Consts.ENCODING_1251)
+            return Encoding.GetEncoding(Consts.ENCODING_1251);
+        else return Encoding.Default;
+    }
+
     private void textBoxDropable_DragLeave(object sender, EventArgs e)
     {
         textBoxDropable.Text = Consts.DROP_FILES_HERE;
     }
     #endregion
+
+    private void cbEncodings_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Properties.Settings.Default.Encoding = cbEncodings.Text;
+        Properties.Settings.Default.Save();
+    }
 }

@@ -40,3 +40,23 @@ D:\YandexDisk\Dev\Cropper 2.0\Cropper\obj\Release\net6.0-windows\refint\Cropper.
 D:\YandexDisk\Dev\Cropper 2.0\Cropper\obj\Release\net6.0-windows\Cropper.pdb
 D:\YandexDisk\Dev\Cropper 2.0\Cropper\obj\Release\net6.0-windows\Cropper.genruntimeconfig.cache
 D:\YandexDisk\Dev\Cropper 2.0\Cropper\obj\Release\net6.0-windows\ref\Cropper.dll
+C:\YandexDisk\Dev\Cropper\3.0\bin\Release\net6.0-windows\Cropper.exe
+C:\YandexDisk\Dev\Cropper\3.0\bin\Release\net6.0-windows\Cropper.deps.json
+C:\YandexDisk\Dev\Cropper\3.0\bin\Release\net6.0-windows\Cropper.runtimeconfig.json
+C:\YandexDisk\Dev\Cropper\3.0\bin\Release\net6.0-windows\Cropper.dll
+C:\YandexDisk\Dev\Cropper\3.0\bin\Release\net6.0-windows\Cropper.pdb
+C:\YandexDisk\Dev\Cropper\3.0\bin\Release\net6.0-windows\WordLib.dll
+C:\YandexDisk\Dev\Cropper\3.0\bin\Release\net6.0-windows\WordLib.pdb
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.csproj.AssemblyReference.cache
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.Form1.resources
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.csproj.GenerateResource.cache
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.GeneratedMSBuildEditorConfig.editorconfig
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.AssemblyInfoInputs.cache
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.AssemblyInfo.cs
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.csproj.CoreCompileInputs.cache
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.csproj.CopyComplete
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.dll
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\refint\Cropper.dll
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.pdb
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\Cropper.genruntimeconfig.cache
+C:\YandexDisk\Dev\Cropper\3.0\obj\Release\net6.0-windows\ref\Cropper.dll

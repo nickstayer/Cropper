@@ -9,9 +9,9 @@ public class Parser
     private bool _hasSetOpened = false;
     private int _setCount = 0;
 
-    public Parser(string file, string[] departments)
+    public Parser(string file, string[] departments, Encoding encoding)
     {
-        _content = File.ReadAllLines(file, Encoding.Default);
+        _content = File.ReadAllLines(file, encoding);
         _departments = departments;
     }
 

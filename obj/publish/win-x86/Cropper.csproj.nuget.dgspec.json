@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj": {}
+    "C:\\YandexDisk\\Dev\\Cropper\\3.0\\Cropper.csproj": {}
   },
   "projects": {
-    "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj": {
+    "C:\\YandexDisk\\Dev\\Cropper\\3.0\\Cropper.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj",
+        "projectUniqueName": "C:\\YandexDisk\\Dev\\Cropper\\3.0\\Cropper.csproj",
         "projectName": "Cropper",
-        "projectPath": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\Cropper.csproj",
-        "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "D:\\YandexDisk\\Dev\\Cropper 2.0\\Cropper\\obj\\publish\\win-x86\\",
+        "projectPath": "C:\\YandexDisk\\Dev\\Cropper\\3.0\\Cropper.csproj",
+        "packagesPath": "C:\\Users\\susbook\\.nuget\\packages\\",
+        "outputPath": "C:\\YandexDisk\\Dev\\Cropper\\3.0\\obj\\publish\\win-x86\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
         "configFilePaths": [
-          "C:\\Users\\admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\susbook\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,15 +26,14 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "D:\\YandexDisk\\Dev\\_packages": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "D:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj": {
-                "projectPath": "D:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj"
+              "C:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj": {
+                "projectPath": "C:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj"
               }
             }
           }
@@ -45,9 +48,9 @@
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "dependencies": {
-            "Newtonsoft.Json": {
+            "Microsoft.NETCore.Platforms": {
               "target": "Package",
-              "version": "[13.0.1, )"
+              "version": "[8.0.0-preview.3.23174.8, )"
             },
             "System.Text.Encoding.CodePages": {
               "target": "Package",
@@ -68,19 +71,19 @@
           "downloadDependencies": [
             {
               "name": "Microsoft.AspNetCore.App.Runtime.win-x86",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.13, 6.0.13]"
             },
             {
               "name": "Microsoft.NETCore.App.Crossgen2.win-x64",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.13, 6.0.13]"
             },
             {
               "name": "Microsoft.NETCore.App.Runtime.win-x86",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.13, 6.0.13]"
             },
             {
               "name": "Microsoft.WindowsDesktop.App.Runtime.win-x86",
-              "version": "[6.0.9, 6.0.9]"
+              "version": "[6.0.13, 6.0.13]"
             }
           ],
           "frameworkReferences": {
@@ -91,7 +94,7 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       },
       "runtimes": {
@@ -100,11 +103,11 @@
         }
       }
     },
-    "D:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj": {
+    "C:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj": {
       "restore": {
-        "projectUniqueName": "D:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj",
+        "projectUniqueName": "C:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj",
         "projectName": "WordLib",
-        "projectPath": "D:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj",
+        "projectPath": "C:\\YandexDisk\\Dev\\_Libs\\WordLib\\WordLib.csproj",
         "frameworks": {
           "net472": {
             "projectReferences": {}

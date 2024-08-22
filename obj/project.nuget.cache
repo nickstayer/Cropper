@@ -1,11 +1,15 @@
 {
   "version": 2,
-  "dgSpecHash": "pz3M+5pj0mVHGeGyx9YiPBY2HT2Q497rxUMfGMzUm+okXyY5wPC8mwtr73A1L0tpA8uaxYouMa59eU2oLVVsag==",
+  "dgSpecHash": "AkMWws2uT5Y=",
   "success": true,
-  "projectFilePath": "C:\\YandexDisk\\Dev\\Cropper\\3.0\\Cropper.csproj",
+  "projectFilePath": "c:\\Git\\Cropper\\Cropper.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\susbook\\.nuget\\packages\\microsoft.netcore.platforms\\8.0.0-preview.3.23174.8\\microsoft.netcore.platforms.8.0.0-preview.3.23174.8.nupkg.sha512",
-    "C:\\Users\\susbook\\.nuget\\packages\\system.text.encoding.codepages\\4.7.1\\system.text.encoding.codepages.4.7.1.nupkg.sha512"
+    "C:\\Users\\susbook\\.nuget\\packages\\system.text.encoding.codepages\\4.7.1\\system.text.encoding.codepages.4.7.1.nupkg.sha512",
+    "C:\\Users\\susbook\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.33\\microsoft.netcore.app.ref.6.0.33.nupkg.sha512",
+    "C:\\Users\\susbook\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.33\\microsoft.windowsdesktop.app.ref.6.0.33.nupkg.sha512",
+    "C:\\Users\\susbook\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.33\\microsoft.aspnetcore.app.ref.6.0.33.nupkg.sha512",
+    "C:\\Users\\susbook\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.33\\microsoft.netcore.app.host.win-x64.6.0.33.nupkg.sha512"
   ],
   "logs": []
 }

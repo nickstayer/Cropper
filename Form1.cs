@@ -3,12 +3,14 @@ namespace Cropper;
 public partial class Form1 : Form
 {
     private string[] _departments;
+    private string[] _encodings;
     private void Form1_Load(object sender, EventArgs e)
     {
         try
         {
             SetDefaultText();
-            GetSettings();
+            _departments = GetSettings(Consts.SETTINGS_FILE);
+            _encodings = GetSettings(Consts.ENCODING_FILE);
             FillForm();
         }
         catch (Exception ex)
@@ -20,29 +22,35 @@ public partial class Form1 : Form
     private void SetDefaultText()
     {
         labelStatus.Text = string.Empty;
-        comboBoxDeps.Text = Consts.HIGHLIGHT;
+        cbDepartments.Text = Consts.HIGHLIGHT;
         textBoxDropable.Text = Consts.DROP_FILES_HERE;
+        cbEncodings.Text = Properties.Settings.Default.Encoding;
     }
 
-    private void GetSettings()
+    private string[] GetSettings(string file)
     {
-        if(File.Exists(Consts.SETTINGS_FILE))
+        if(File.Exists(file))
         {
-            _departments = File.ReadAllLines(Consts.SETTINGS_FILE, Encoding.Default);
+            return File.ReadAllLines(file, Encoding.Default);
         }
         else
         {
             textBoxDropable.Enabled = false;
-            throw new Exception($"{Consts.NO_SETTINGS_FILE}: {Consts.SETTINGS_FILE}");
+            throw new Exception($"{Consts.NO_SETTINGS_FILE}: {file}");
         }
     }
 
     private void FillForm()
     {
-        comboBoxDeps.Items.Clear();
+        cbDepartments.Items.Clear();
         foreach (var dep in _departments)
         {
-            comboBoxDeps.Items.Add(dep.Trim());
+            cbDepartments.Items.Add(dep.Trim());
+        }
+        cbEncodings.Items.Clear();
+        foreach (var dep in _encodings)
+        {
+            cbEncodings.Items.Add(dep.Trim());
         }
     }
 
@@ -51,7 +59,7 @@ public partial class Form1 : Form
         var file = fileInfo.FullName.Replace("txt", "docx");
         var app = new WordApp();
         app.CreateDoc();
-        app.AddContent(content);
+        app.AddContentToBegin(content);
         app.FormattDoc();
         HighlightSelectedItemInDocument(app);
         app.SaveDocAs(file);
@@ -61,9 +69,9 @@ public partial class Form1 : Form
 
     private void HighlightSelectedItemInDocument(WordApp app)
     {
-        if (comboBoxDeps.Text != Consts.HIGHLIGHT)
+        if (cbDepartments.Text != Consts.HIGHLIGHT)
         {
-            app.HighLightRowsWithText(comboBoxDeps.SelectedItem.ToString());
+            app.HighLightRowsWithText(cbDepartments.SelectedItem.ToString());
         }
     }
 

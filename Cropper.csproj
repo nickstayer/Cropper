@@ -16,12 +16,6 @@
     <Content Include="Cropper.ico" />
   </ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\Cropper_128.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Platforms" Version="8.0.0-preview.3.23174.8" />
@@ -29,7 +23,26 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\_Libs\WordLib\WordLib.csproj" />
+    <Reference Include="WordLib">
+      <HintPath>WordLib.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
   </ItemGroup>
 
 </Project>
