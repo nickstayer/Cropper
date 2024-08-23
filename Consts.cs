@@ -19,6 +19,7 @@ internal class Consts
 
     public const string SETTINGS_FILE = "settings.txt";
     public const string ENCODING_FILE = "encoding.txt";
+    public const string HIGHLIGHT_LIST_FILE = "highlightList.txt";
 
     public static string[] Encodings = new string[]
     {
