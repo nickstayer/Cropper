@@ -1,8 +1,0 @@
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\Cropper.exe
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\Cropper.dll
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\Cropper.deps.json
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\Cropper.runtimeconfig.json
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\Cropper.pdb
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\Newtonsoft.Json.dll
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\WordLib.dll
-D:\YandexDisk\Dev\Cropper 2.0\Publish_OnceClick\WordLib.pdb
