@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("nickstayer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+deac22f1d95bac5c8aed757f17b4866571036c21")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7a1c3428951aa9a515355ce71b7bff970b79cc59")]
 [assembly: System.Reflection.AssemblyProductAttribute("Cropper")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Cropper")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
