@@ -1,6 +1,6 @@
 ﻿namespace Cropper;
 
-public class Parser
+public class DataManager
 {
     private string[] _content;
 
@@ -9,23 +9,23 @@ public class Parser
     private bool _hasSetOpened = false;
     private int _setCount = 0;
 
-    public Parser(string file, string[] departments, Encoding encoding)
+    public DataManager(string file, string[] departments, Encoding encoding)
     {
         _content = File.ReadAllLines(file, encoding);
         _departments = departments;
     }
 
-    public string Parse()
+    public string Filter()
     {
         var list = new List<string>();
-        foreach(var row in _content) 
+        foreach (var row in _content)
         {
             if (row.StartsWith(Consts.FIRST_TABLE_BODY_ROW))
             {
                 OpenTableBody();
             }
 
-            if(!_hasTableOpened)
+            if (!_hasTableOpened)
             {
                 list.Add(row);
                 continue;
@@ -45,13 +45,13 @@ public class Parser
             }
             if (_hasSetOpened)
             {
-                if(_setCount==_departments.Length)
+                if (_setCount == _departments.Length)
                 {
-                    _setCount= 0;
+                    _setCount = 0;
                     CloseSet();
                     continue;
                 }
-                foreach(var dep in _departments)
+                foreach (var dep in _departments)
                 {
                     if (row.StartsWith(dep))
                     {
@@ -64,6 +64,12 @@ public class Parser
             continue;
         }
 
+        var result = EnumarableToString(list);
+        return result;
+    }
+
+    public static string EnumarableToString(IEnumerable<string> list)
+    {
         var result = string
             .Join("\r\n", list)
             .Replace("", "")

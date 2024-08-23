@@ -4,6 +4,9 @@ public partial class Form1 : Form
 {
     private string[] _departments;
     private string[] _encodings;
+    private HashSet<string> _highlightList;
+    private Dictionary<string, string> _highlightRules;
+
     private void Form1_Load(object sender, EventArgs e)
     {
         try
@@ -11,6 +14,8 @@ public partial class Form1 : Form
             SetDefaultText();
             _departments = GetSettings(Consts.SETTINGS_FILE);
             _encodings = GetSettings(Consts.ENCODING_FILE);
+            _highlightList = GetHighLightList();
+            _highlightRules = GetHighLightRules();
             FillForm();
         }
         catch (Exception ex)
@@ -29,7 +34,7 @@ public partial class Form1 : Form
 
     private string[] GetSettings(string file)
     {
-        if(File.Exists(file))
+        if (File.Exists(file))
         {
             return File.ReadAllLines(file, Encoding.Default);
         }
@@ -54,27 +59,6 @@ public partial class Form1 : Form
         }
     }
 
-    private void SaveToWord(FileInfo fileInfo, string content)
-    {
-        var file = fileInfo.FullName.Replace("txt", "docx");
-        var app = new WordApp();
-        app.CreateDoc();
-        app.AddContentToBegin(content);
-        app.FormattDoc();
-        HighlightSelectedItemInDocument(app);
-        app.SaveDocAs(file);
-        app.CloseDoc();
-        app.Quit();
-    }
-
-    private void HighlightSelectedItemInDocument(WordApp app)
-    {
-        if (cbDepartments.Text != Consts.HIGHLIGHT)
-        {
-            app.HighLightRowsWithText(cbDepartments.SelectedItem.ToString());
-        }
-    }
-
     private static List<FileInfo> GetFilesInfo(DragEventArgs e)
     {
         if (e.Data == null)
@@ -86,7 +70,7 @@ public partial class Form1 : Form
         foreach (var file in files)
         {
             var fileInfo = new FileInfo(file);
-            if (fileInfo.Extension != Consts.INPUT_FILE_EXTENTION)
+            if (fileInfo.Extension.ToLower() != Consts.INPUT_FILE_EXTENTION)
             {
                 throw new FileFormatException(Consts.WRONG_EXTENTION);
             }
