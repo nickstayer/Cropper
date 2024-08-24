@@ -123,7 +123,8 @@ public class DataManager
         var result = lines
             .Select(str => str.Split(';'))
             .Where(parts => parts.Length > 1)
-            .ToDictionary(parts => parts[0], parts => parts[1]);
+            .GroupBy(parts => parts[0])
+            .ToDictionary(group => group.Key, group => group.First()[1]);
         return result;
     }
 

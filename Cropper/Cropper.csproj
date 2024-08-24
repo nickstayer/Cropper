@@ -9,7 +9,7 @@
     <ApplicationIcon>Cropper.ico</ApplicationIcon>
     <Authors>nickstayer</Authors>
     <Company>$(Authors)</Company>
-    <PackageIcon>Cropper_128.png</PackageIcon>
+    <!-- <PackageIcon>Cropper_128.png</PackageIcon> -->
   </PropertyGroup>
 
   <ItemGroup>

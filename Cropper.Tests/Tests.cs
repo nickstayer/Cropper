@@ -1,5 +1,4 @@
 using System.Text;
-using Cropper;
 
 namespace Cropper.Tests;
 
