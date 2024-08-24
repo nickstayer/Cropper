@@ -17,9 +17,10 @@ internal class Consts
     public const string ENCODING = "Кодировка";
 
 
-    public const string SETTINGS_FILE = "settings.txt";
+    public const string SETTINGS_FILE = "filterLines.txt";
     public const string ENCODING_FILE = "encoding.txt";
-    public const string HIGHLIGHT_LIST_FILE = "highlightList.txt";
+    public const string FORMS_TO_HIGHLIGHT_FILE = "formsToHighlight.txt";
+    public const string HIGHLIGHT_RULES_FILE = "highlightRules.txt";
 
     public static string[] Encodings = new string[]
     {

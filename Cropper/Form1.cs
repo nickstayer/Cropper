@@ -2,20 +2,20 @@ namespace Cropper;
 
 public partial class Form1 : Form
 {
-    private string[] _departments;
-    private string[] _encodings;
-    private HashSet<string> _highlightList;
-    private Dictionary<string, string> _highlightRules;
+    private string[]? _departments;
+    private string[]? _encodings;
+    private HashSet<string>? _formsToHighlight;
+    private Dictionary<string, string>? _highlightRules;
 
     private void Form1_Load(object sender, EventArgs e)
     {
         try
         {
             SetDefaultText();
-            _departments = GetSettings(Consts.SETTINGS_FILE);
-            _encodings = GetSettings(Consts.ENCODING_FILE);
-            _highlightList = GetHighLightList();
-            _highlightRules = GetHighLightRules();
+            _departments = DataManager.GetSettings(Consts.SETTINGS_FILE);
+            _encodings = DataManager.GetSettings(Consts.ENCODING_FILE);
+            _formsToHighlight = DataManager.GetFormsToHighlight(Consts.FORMS_TO_HIGHLIGHT_FILE);
+            _highlightRules = DataManager.GetHighlightRules(Consts.HIGHLIGHT_RULES_FILE);
             FillForm();
         }
         catch (Exception ex)
@@ -32,28 +32,15 @@ public partial class Form1 : Form
         cbEncodings.Text = Properties.Settings.Default.Encoding;
     }
 
-    private string[] GetSettings(string file)
-    {
-        if (File.Exists(file))
-        {
-            return File.ReadAllLines(file, Encoding.Default);
-        }
-        else
-        {
-            textBoxDropable.Enabled = false;
-            throw new Exception($"{Consts.NO_SETTINGS_FILE}: {file}");
-        }
-    }
-
     private void FillForm()
     {
         cbDepartments.Items.Clear();
-        foreach (var dep in _departments)
+        foreach (var dep in _departments!)
         {
             cbDepartments.Items.Add(dep.Trim());
         }
         cbEncodings.Items.Clear();
-        foreach (var dep in _encodings)
+        foreach (var dep in _encodings!)
         {
             cbEncodings.Items.Add(dep.Trim());
         }
