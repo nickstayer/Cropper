@@ -2,6 +2,13 @@ C:\YandexDisk\Dev\infrastructure\dotnet\nuget.exe install Microsoft.NETCore.App.
 C:\YandexDisk\Dev\infrastructure\dotnet\nuget.exe install Microsoft.WindowsDesktop.App.Ref -OutputDirectory c:\packages\C#\
 C:\YandexDisk\Dev\infrastructure\dotnet\nuget.exe install Microsoft.AspNetCore.App.Ref -OutputDirectory c:\packages\C#\
 C:\YandexDisk\Dev\infrastructure\dotnet\nuget.exe install Microsoft.NETCore.App.Host.win-x64 -OutputDirectory c:\packages\C#\
+
+
+dotnet add package Microsoft.NETCore.App.Ref --version 6.0.33 --package-directory ./nuget-packages
+dotnet add package Microsoft.WindowsDesktop.App.Ref --version 6.0.33 --package-directory ./nuget-packages
+dotnet add package Microsoft.AspNetCore.App.Ref --version 6.0.33 --package-directory ./nuget-packages
+dotnet add package Microsoft.NETCore.App.Host.win-x64 --version 6.0.33 --package-directory ./nuget-packages
+
 		
 		
 		
