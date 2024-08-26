@@ -4,12 +4,12 @@ namespace Cropper;
 
 internal class Consts
 {
-    public const string DROP_FILES_HERE = "Скопируйте формы в текстовые файлы (.txt) и перетащите их сюда";
+    public const string DROP_FILES_HERE = "Перетащите сюда формы ИЦ (.txt)";
     public const string INPUT_FILE_EXTENTION = ".txt";
     public const string WRONG_EXTENTION = "Недопустимое расширение файла";
     public const string NO_SETTINGS_FILE = "Отсутствует файл настроек";
     public const string FINISH = "Готово!";
-    public const string HIGHLIGHT = "Выделить";
+    public const string MARK = "Выделить";
     public const string FIRST_TABLE_BODY_ROW = ":АГАПОВКА";
     public const string LAST_TABLE_BODY_ROW = ":ОБЛАСТЬ";
     public const string ENCODING_DEFAULT = "по умолчанию";
@@ -17,10 +17,11 @@ internal class Consts
     public const string ENCODING = "Кодировка";
 
 
-    public const string SETTINGS_FILE = "filterLines.txt";
+    public const string FILTER_FILE = "filter.txt";
     public const string ENCODING_FILE = "encoding.txt";
-    public const string FORMS_TO_HIGHLIGHT_FILE = "formsToHighlight.txt";
-    public const string HIGHLIGHT_RULES_FILE = "highlightRules.txt";
+    public const string MARKER_RULES_FILE = "marker.txt";
+    public const string FORMS_TO_DOWNLOAD_FILE = "download_forms.txt";
+    public const string URL_FILE = "download_url.txt";
 
     public static string[] Encodings = new string[]
     {

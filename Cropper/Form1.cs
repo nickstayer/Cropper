@@ -1,34 +1,42 @@
+using static System.Windows.Forms.LinkLabel;
+using System.Diagnostics.Metrics;
+using System.Security.Policy;
+
 namespace Cropper;
 
 public partial class Form1 : Form
 {
     private string[]? _departments;
     private string[]? _encodings;
-    private HashSet<string>? _formsToHighlight;
     private Dictionary<string, string>? _highlightRules;
+
+    public Form1()
+    {
+        InitializeComponent();
+    }
 
     private void Form1_Load(object sender, EventArgs e)
     {
         try
         {
             SetDefaultText();
-            _departments = DataManager.GetSettings(Consts.SETTINGS_FILE);
+            _departments = DataManager.GetSettings(Consts.FILTER_FILE);
             _encodings = DataManager.GetSettings(Consts.ENCODING_FILE);
-            _formsToHighlight = DataManager.GetFormsToHighlight(Consts.FORMS_TO_HIGHLIGHT_FILE);
-            _highlightRules = DataManager.GetHighlightRules(Consts.HIGHLIGHT_RULES_FILE);
+            _highlightRules = DataManager.GetHighlightRules(Consts.MARKER_RULES_FILE);
             FillForm();
         }
         catch (Exception ex)
         {
-            textBoxDropable.Text = ex.Message;
+            textBoxDropableFilter.Text = ex.Message;
         }
     }
 
     private void SetDefaultText()
     {
         labelStatus.Text = string.Empty;
-        cbDepartments.Text = Consts.HIGHLIGHT;
-        textBoxDropable.Text = Consts.DROP_FILES_HERE;
+        cbDepartments.Text = Consts.MARK;
+        textBoxDropableFilter.Text = Consts.DROP_FILES_HERE;
+        textBoxDropableMarker.Text = Consts.DROP_FILES_HERE;
         cbEncodings.Text = Properties.Settings.Default.Encoding;
     }
 
@@ -66,8 +74,66 @@ public partial class Form1 : Form
         return result;
     }
 
-    private void OutputTextboxDropable(string message)
+    private void ShowMessage(string message)
     {
-        textBoxDropable.Text += message + "\r\n";
+        textBoxDropableFilter.Text += message + "\r\n";
+        textBoxDropableMarker.Text += message + "\r\n";
     }
+
+    private Encoding GetEncoding()
+    {
+        return DataManager.GetEncoding(cbEncodings.Text);
+    }
+
+    private void CbEncodings_SelectedIndexChanged(object sender, EventArgs e)
+    {
+        Properties.Settings.Default.Encoding = cbEncodings.Text;
+        Properties.Settings.Default.Save();
+    }
+
+    private async Task DownloadForms(object sender, EventArgs e)
+    {
+        var downloadsDir = Path.Combine(Directory.GetCurrentDirectory(), "forms");
+        if(!Directory.Exists(downloadsDir)) { Directory.CreateDirectory(downloadsDir); }
+        try
+        {
+            string url = File.ReadAllText(Consts.URL_FILE).Trim();
+            var needFormsNames = File.ReadAllLines(Consts.FORMS_TO_DOWNLOAD_FILE)
+                                     .Where(line => !string.IsNullOrWhiteSpace(line))
+                                     .Select(line => line.Trim())
+                                     .ToList();
+
+            string baseUrl = GetBaseUrl(url);
+            var fileLinks = await WebManager.GetLinks(url);
+
+            int counter = 0;
+
+            foreach (var link in fileLinks)
+            {
+                string fullUrl = link.StartsWith("http") ? link : baseUrl + link;
+
+                if (needFormsNames.Contains(Path.GetFileName(fullUrl)))
+                {
+                    var fileName = Path.GetFileName(fullUrl);
+                    var savePath = Path.Combine(downloadsDir, fileName);
+                    await WebManager.DownloadTextFile(fullUrl, savePath);
+                    counter++;
+                }
+            }
+
+            labelStatus.Text = $"Загружено форм: {counter}";
+        }
+        catch (Exception ex)
+        {
+            labelStatus.Text = ex.Message;
+        }
+    }
+
+    public string GetBaseUrl(string url)
+    {
+        var urlComponents = url.Split('/');
+        string baseUrl = urlComponents[0] + "//" + urlComponents[2];
+        return baseUrl;
+    }
+
 }
