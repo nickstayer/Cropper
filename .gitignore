@@ -367,3 +367,4 @@ tmp/
 *.exe
 *.docx
 *.zip
+nuget-packages/
