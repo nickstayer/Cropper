@@ -1,0 +1,8 @@
+target: Folder
+specific target: Folder
+deployment mode: self contained
+target runtime: win-x86
+
+File publish options:
+enable easyToRun compilation
+produce single file
