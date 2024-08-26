@@ -364,3 +364,5 @@ FodyWeavers.xsd
 
 *.patch
 tmp/
+*.exe
+*.docx
