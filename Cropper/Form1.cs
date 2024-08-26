@@ -121,7 +121,7 @@ public partial class Form1 : Form
                 }
             }
 
-            labelStatus.Text = $"Загружено форм: {counter}";
+            labelStatus.Text = $"РЎРєР°С‡Р°РЅРѕ С„РѕСЂРј: {counter}";
         }
         catch (Exception ex)
         {

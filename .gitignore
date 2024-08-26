@@ -366,3 +366,4 @@ FodyWeavers.xsd
 tmp/
 *.exe
 *.docx
+*.zip

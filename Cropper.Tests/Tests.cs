@@ -41,4 +41,36 @@ public class Tests
         var result = DataManager.GetHighLightLines(lines, rules);
         Assert.That(result.Count, Is.EqualTo(expectedLinesCount));
     }
-}
+
+    [Test]
+    public async Task DownloadTextFileTest()
+    {
+        var testurl = "https://filesamples.com/samples/document/txt/sample3.txt";
+        var fileName = Path.GetFileName(testurl);
+        var downloadDir = Path.Combine(_dataDir, "download_test");
+        if(!Directory.Exists(downloadDir))
+            Directory.CreateDirectory(downloadDir);
+        var savePath = Path.Combine(downloadDir, fileName);
+        if(!File.Exists(savePath))
+            File.Delete(savePath);
+        await WebManager.DownloadTextFile(testurl, savePath);
+        var result = File.Exists(savePath);
+        Assert.That(result, Is.True);
+    }
+
+    [Test]
+    public async Task DownloadFileTest()
+    {
+        var testurl = "http://crl.roskazna.ru/crl/ucfk_2024.crl";
+        var downloadDir = Path.Combine(_dataDir, "download_test");
+        if(!Directory.Exists(downloadDir))
+            Directory.CreateDirectory(downloadDir);
+        var fileName = Path.GetFileName(testurl);
+        var filePath = Path.Combine(downloadDir, fileName);
+        if(File.Exists(filePath))
+            File.Delete(filePath);
+        await WebManager.DownloadFile(testurl, downloadDir);
+        var result = File.Exists(filePath);
+        Assert.That(result, Is.True);
+    }
+} 

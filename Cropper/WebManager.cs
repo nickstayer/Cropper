@@ -1,16 +1,16 @@
 ﻿namespace Cropper;
 
-class WebManager
+public class WebManager
 {
     static readonly HttpClient client = new HttpClient();
 
-    public static async Task<string> DownloadTextFile(string url, string savePath)
+    public static async Task<string> DownloadTextFile(string url, string filePath)
     {
         HttpResponseMessage response = await client.GetAsync(url);
         response.EnsureSuccessStatusCode();
         string text = await response.Content.ReadAsStringAsync();
-        await File.WriteAllTextAsync(savePath, text.Replace("\r\n", "\r"));
-        return savePath;
+        await File.WriteAllTextAsync(filePath, text.Replace("\r\n", "\r"));
+        return filePath;
     }
 
     public static async Task DownloadFile(string fileUrl, string dirPath)
