@@ -34,9 +34,10 @@ namespace Cropper
             cbDepartments = new ComboBox();
             textBoxDropableFilter = new TextBox();
             textBoxDropableMarker = new TextBox();
+            textBoxDownload = new TextBox();
             labelStatus = new Label();
             cbEncodings = new ComboBox();
-            label1 = new Label();
+            labelEncoding = new Label();
             tabControl1 = new TabControl();
             tabPage1 = new TabPage();
             tabPage2 = new TabPage();
@@ -104,12 +105,12 @@ namespace Cropper
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(9, 115);
-            label1.Name = "label1";
-            label1.Size = new Size(69, 15);
-            label1.TabIndex = 2;
-            label1.Text = "Кодировка:";
+            labelEncoding.AutoSize = true;
+            labelEncoding.Location = new Point(9, 115);
+            labelEncoding.Name = "label1";
+            labelEncoding.Size = new Size(69, 15);
+            labelEncoding.TabIndex = 2;
+            labelEncoding.Text = "Кодировка:";
             // 
             // tabControl1
             // 
@@ -121,13 +122,14 @@ namespace Cropper
             tabControl1.SelectedIndex = 0;
             tabControl1.Size = new Size(247, 113);
             tabControl1.TabIndex = 4;
+            tabControl1.Selected += new TabControlEventHandler(TabControl1_Selected);
             // 
             // tabPage1
             // 
             tabPage1.Controls.Add(cbDepartments);
             tabPage1.Controls.Add(textBoxDropableFilter);
             tabPage1.Location = new Point(4, 24);
-            tabPage1.Name = "tabPage1";
+            tabPage1.Name = "Filter";
             tabPage1.Padding = new Padding(3);
             tabPage1.Size = new Size(239, 85);
             tabPage1.TabIndex = 0;
@@ -138,7 +140,7 @@ namespace Cropper
             // 
             tabPage2.Controls.Add(textBoxDropableMarker);
             tabPage2.Location = new Point(4, 24);
-            tabPage2.Name = "tabPage2";
+            tabPage2.Name = "Marker";
             tabPage2.Padding = new Padding(3);
             tabPage2.Size = new Size(239, 85);
             tabPage2.TabIndex = 1;
@@ -148,8 +150,9 @@ namespace Cropper
             // tabPage3
             // 
             tabPage3.Controls.Add(btDownloadForms);
+            tabPage3.Controls.Add(textBoxDownload);
             tabPage3.Location = new Point(4, 24);
-            tabPage3.Name = "tabPage3";
+            tabPage3.Name = "Download";
             tabPage3.Padding = new Padding(3);
             tabPage3.Size = new Size(239, 85);
             tabPage3.TabIndex = 2;
@@ -158,12 +161,21 @@ namespace Cropper
             // 
             // btDownloadForms
             // 
-            btDownloadForms.Location = new Point(63, 28);
+            btDownloadForms.Location = new Point(1, 2);
             btDownloadForms.Name = "btDownloadForms";
-            btDownloadForms.Size = new Size(120, 25);
+            btDownloadForms.Size = new Size(235, 25);
             btDownloadForms.TabIndex = 0;
             btDownloadForms.Text = "Скачать формы";
             btDownloadForms.Click += DownloadForms;
+            // 
+            // textBoxDownload
+            // 
+            textBoxDownload.Location = new Point(1, 29);
+            textBoxDownload.Multiline = true;
+            textBoxDownload.Name = "textBoxDownload";
+            textBoxDownload.ScrollBars = ScrollBars.Vertical;
+            textBoxDownload.Size = new Size(235, 56);
+            textBoxDownload.TabIndex = 1;
             // 
             // Form1
             // 
@@ -172,7 +184,7 @@ namespace Cropper
             ClientSize = new Size(248, 180);
             Controls.Add(tabControl1);
             Controls.Add(cbEncodings);
-            Controls.Add(label1);
+            Controls.Add(labelEncoding);
             Controls.Add(labelStatus);
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "Form1";
@@ -194,9 +206,10 @@ namespace Cropper
         private ComboBox cbDepartments;
         private TextBox textBoxDropableFilter;
         private TextBox textBoxDropableMarker;
+        private TextBox textBoxDownload;
         private Label labelStatus;
         private ComboBox cbEncodings;
-        private Label label1;
+        private Label labelEncoding;
         private TabControl tabControl1;
         private TabPage tabPage1;
         private TabPage tabPage2;

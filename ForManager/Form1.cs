@@ -43,6 +43,7 @@ public partial class Form1 : Form
     private void FillForm()
     {
         cbDepartments.Items.Clear();
+        cbDepartments.Items.Add("");
         foreach (var dep in _departments!)
         {
             cbDepartments.Items.Add(dep.Trim());
@@ -117,6 +118,7 @@ public partial class Form1 : Form
                 if (needFormsNames.Contains(Path.GetFileName(fullUrl)))
                 {
                     var fileName = Path.GetFileName(fullUrl);
+                    labelStatus.Text = fileName;
                     var savePath = Path.Combine(downloadsDir, fileName);
                     await WebManager.DownloadTextFile(fullUrl, savePath, encoding);
                     counter++;
@@ -127,7 +129,7 @@ public partial class Form1 : Form
         }
         catch (Exception ex)
         {
-            labelStatus.Text = ex.Message;
+            textBoxDownload.Text = ex.Message;
         }
     }
 

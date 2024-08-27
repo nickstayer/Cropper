@@ -32,7 +32,7 @@ public partial class Form1
                 var filter = new DataManager(fileInfo.FullName, _departments!, encoding);
                 var filtredContent = await Task.Run(() => (filter.Filter()));
                 await Task.Run(() => DataManager.SaveToWordWithFormatting(wordFilePath, filtredContent));
-                if (cbDepartments.Text != Consts.MARK)
+                if (cbDepartments.Text != Consts.MARK || !string.IsNullOrEmpty(cbDepartments.Text))
                 {
                     var text = cbDepartments.SelectedItem!.ToString();
                     await Task.Run(() => DataManager.HighLightParagraphsWithText(wordFilePath, [text!]));
@@ -78,4 +78,13 @@ public partial class Form1
         textBoxDropableMarker.Text = Consts.DROP_FILES_HERE;
     }
     #endregion
+
+    private void TabControl1_Selected(object sender, TabControlEventArgs e)
+    {
+        if (e.TabPage == tabPage3)
+
+            cbEncodings.Enabled = false;
+        else
+            cbEncodings.Enabled = true;
+    }
 }
