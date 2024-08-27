@@ -60,7 +60,7 @@ public partial class Form1 : Form
         {
             throw new NullReferenceException();
         }
-        string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+        string[] files = (string[])e.Data.GetData(DataFormats.FileDrop)!;
         List<FileInfo> result = new List<FileInfo>();
         foreach (var file in files)
         {

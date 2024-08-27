@@ -368,3 +368,4 @@ tmp/
 *.docx
 *.zip
 nuget-packages/
+download_test/*

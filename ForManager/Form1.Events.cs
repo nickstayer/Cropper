@@ -34,7 +34,7 @@ public partial class Form1
                 DataManager.SaveToWordWithFormatting(wordFilePath, filtredContent);
                 if (cbDepartments.Text != Consts.MARK)
                 {
-                    var text = cbDepartments.SelectedItem.ToString();
+                    var text = cbDepartments.SelectedItem!.ToString();
                     DataManager.HighLightParagraphsWithText(wordFilePath, new string[] { text! });
                 }
             }

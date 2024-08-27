@@ -5,13 +5,12 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>Cropper.ico</ApplicationIcon>
+    <ApplicationIcon>ForManager.ico</ApplicationIcon>
     <Authors>nickstayer</Authors>
     <Company>$(Authors)</Company>
-    <!-- <PackageIcon>Cropper_128.png</PackageIcon> -->
   </PropertyGroup>
   <ItemGroup>
-    <Content Include="Cropper.ico" />
+    <Content Include="ForManager.ico" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="HtmlAgilityPack" Version="1.11.64" />
