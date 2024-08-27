@@ -369,3 +369,4 @@ tmp/
 *.zip
 nuget-packages/
 download_test/*
+publish/
