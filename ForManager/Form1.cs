@@ -93,6 +93,8 @@ public partial class Form1 : Form
 
     private async Task DownloadForms(object sender, EventArgs e)
     {
+        Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+        var encoding = Encoding.GetEncoding("cp866");
         var downloadsDir = Path.Combine(Directory.GetCurrentDirectory(), "forms");
         if(!Directory.Exists(downloadsDir)) { Directory.CreateDirectory(downloadsDir); }
         try
@@ -116,7 +118,7 @@ public partial class Form1 : Form
                 {
                     var fileName = Path.GetFileName(fullUrl);
                     var savePath = Path.Combine(downloadsDir, fileName);
-                    await WebManager.DownloadTextFile(fullUrl, savePath);
+                    await WebManager.DownloadTextFile(fullUrl, savePath, encoding);
                     counter++;
                 }
             }
