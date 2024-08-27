@@ -19,7 +19,7 @@ public partial class Form1
         textBoxDropableMarker.Clear();
     }
 
-    private void TextBoxDropableFilter_DragDrop(object sender, DragEventArgs e)
+    private async void TextBoxDropableFilter_DragDrop(object sender, DragEventArgs e)
     {
         try
         {
@@ -30,12 +30,12 @@ public partial class Form1
                 var wordFilePath = fileInfo.FullName.Replace(".txt", ".docx").Replace(".TXT", ".docx");
                 var encoding = GetEncoding();
                 var filter = new DataManager(fileInfo.FullName, _departments!, encoding);
-                var filtredContent = filter.Filter();
-                DataManager.SaveToWordWithFormatting(wordFilePath, filtredContent);
+                var filtredContent = await Task.Run(() => (filter.Filter()));
+                await Task.Run(() => DataManager.SaveToWordWithFormatting(wordFilePath, filtredContent));
                 if (cbDepartments.Text != Consts.MARK)
                 {
                     var text = cbDepartments.SelectedItem!.ToString();
-                    DataManager.HighLightParagraphsWithText(wordFilePath, new string[] { text! });
+                    await Task.Run(() => DataManager.HighLightParagraphsWithText(wordFilePath, [text!]));
                 }
             }
             ShowMessage(Consts.DROP_FILES_HERE);
@@ -47,7 +47,7 @@ public partial class Form1
         }
     }
 
-    private void TextBoxDropableMarker_DragDrop(object sender, DragEventArgs e)
+    private async void TextBoxDropableMarker_DragDrop(object sender, DragEventArgs e)
     {
         try
         {
@@ -60,8 +60,8 @@ public partial class Form1
                 var lines = File.ReadAllLines(fileInfo.FullName, encoding);
                 var highlightLines = DataManager.GetHighLightLines(lines, _highlightRules!);
                 var content = DataManager.EnumarableToString(lines);
-                DataManager.SaveToWordWithFormatting(wordFilePath, content);
-                DataManager.HighLightParagraphsWithText(wordFilePath, highlightLines);
+                await Task.Run(() => DataManager.SaveToWordWithFormatting(wordFilePath, content));
+                await Task.Run(() => DataManager.HighLightParagraphsWithText(wordFilePath, highlightLines));
             }
             ShowMessage(Consts.DROP_FILES_HERE);
             labelStatus.Text = Consts.FINISH;

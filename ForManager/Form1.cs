@@ -91,7 +91,7 @@ public partial class Form1 : Form
         Properties.Settings.Default.Save();
     }
 
-    private async Task DownloadForms(object sender, EventArgs e)
+    private async void DownloadForms(object sender, EventArgs e)
     {
         Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
         var encoding = Encoding.GetEncoding("cp866");

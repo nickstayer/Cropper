@@ -163,7 +163,7 @@ namespace Cropper
             btDownloadForms.Size = new Size(120, 25);
             btDownloadForms.TabIndex = 0;
             btDownloadForms.Text = "Скачать формы";
-            btDownloadForms.Click += async (sender, e) => await DownloadForms(sender, e);
+            btDownloadForms.Click += DownloadForms;
             // 
             // Form1
             // 
