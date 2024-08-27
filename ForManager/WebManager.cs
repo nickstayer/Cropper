@@ -4,7 +4,7 @@ public class WebManager
 {
     static readonly HttpClient client = new HttpClient();
 
-    public static async Task<string> DownloadTextFile(string url, string filePath, Encoding encoding = null)
+    public static async Task<string> DownloadTextFile(string url, string filePath, Encoding? encoding = null)
     {
         HttpResponseMessage response = await client.GetAsync(url);
         response.EnsureSuccessStatusCode();
