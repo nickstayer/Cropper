@@ -84,20 +84,15 @@ public class DataManager
         return result;
     }
 
-    // public static void SaveToWordWithFormatting(string docxFilePath, string content)
-    // {
-    //     var word = new WordApp();
-    //     word.CreateDoc();
-    //     word.AddContentToBegin(content);
-    //     word.FormattDoc();
-    //     word.SaveDocAs(docxFilePath);
-    //     word.CloseDoc();
-    //     word.Quit();
-    // }
-
     public static void SaveToWordWithFormatting(string docxFilePath, string content)
     {
-        Word.SaveToWordWithFormatting(docxFilePath, content);
+        var word = new WordApp();
+        word.CreateDoc();
+        word.AddContentToBegin(content);
+        word.FormattDoc();
+        word.SaveDocAs(docxFilePath);
+        word.CloseDoc();
+        word.Quit();
     }
 
     public static void HighLightParagraphsWithText(string wordFile, IEnumerable<string> lines)
